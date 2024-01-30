@@ -1,0 +1,12 @@
+#!/bin/bash
+
+# it's a nuke for real, will be like you've never run a container before
+
+# Stop and remove all containers
+docker rm -f $(docker ps -a -q)
+
+# images, networks
+docker system prune -af
+
+# system prune command doesn't remove explicitly named volumes
+docker volume prune -af
