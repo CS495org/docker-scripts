@@ -11,3 +11,5 @@ To install docker (on ubuntu, at least, feel free to contribute guides for mac o
 (from this directory): ```./install-docker.sh```
 
 To run docker commands without sudo: ```./no-root.sh```
+
+dshell: Launch sh shell inside specified container. Call `dshell <container id>`, or just `dshell` to run it for most recent container.

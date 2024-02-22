@@ -1,0 +1,28 @@
+#!/bin/bash
+# thanks chatgpt
+
+# Function to get the most recent container ID
+get_last_container_id() {
+    docker ps -q -l
+}
+
+# Check if an argument is provided
+if [ $# -eq 0 ]; then
+    # No argument provided, get the last container ID
+    container_id=$(get_last_container_id)
+elif [ "$1" == "last" ]; then
+    # Argument is "last", get the last container ID
+    container_id=$(get_last_container_id)
+else
+    # Use the provided container ID
+    container_id="$1"
+fi
+
+# Check if container_id is empty
+if [ -z "$container_id" ]; then
+    echo "No running containers found."
+    exit 1
+fi
+
+# Launch an sh shell inside the specified container
+docker exec -it "$container_id" sh
